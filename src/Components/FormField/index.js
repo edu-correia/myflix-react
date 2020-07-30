@@ -23,16 +23,12 @@ Label.Text = styled.span`
   position: absolute; 
   top: 0;
   left: 16px;
-  
-  display: flex;
-  align-items: center;
+  padding-top: 5px;
   
   transform-origin: 0% 0%;
-  font-size: 18px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 300;
-  
-  transition: .1s ease-in-out;
 `;
 
 const Tag = styled.input`
@@ -40,7 +36,7 @@ const Tag = styled.input`
   color: #F5F5F5;
   display: block;
   width: 100%;
-  height: 57px;
+  height: 70px;
   font-size: 18px;
   
   outline: 0;
@@ -48,7 +44,7 @@ const Tag = styled.input`
   border-top: 4px solid transparent;
   border-bottom: 4px solid #53585D;
   
-  padding: 16px 16px;
+  padding: 24px 16px;
   margin-bottom: 45px;
   
   resize: none;
@@ -58,19 +54,6 @@ const Tag = styled.input`
   &:focus {
     border-bottom-color: var(--primary);
   }
-  &:focus:not([type='color']) + ${Label.Text} {
-    transform: scale(.6) translateY(-10px);
-  }
-
-  ${({ value }) => {
-    const hasValue = value.length > 0;
-    return hasValue && css`
-        &:not([type='color']) + ${Label.Text} {
-          transform: scale(.6) translateY(-10px);
-        }
-      `;
-  }
-}
 `;
 
 function FormField({ name, type, label, value, onChange }){
