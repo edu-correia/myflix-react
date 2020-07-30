@@ -62,7 +62,7 @@ function CadastroCategoria(){
                     label="Descrição da Categoria"
                     value={valores.descricao}
                     onChange={handleChange}
-                    type="text"
+                    type="textarea"
                     name="descricao"
                 />
 
