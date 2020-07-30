@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PageDefault from '../../../Components/PageDefault';
 import FormField from '../../../Components/FormField'
 import {Link} from 'react-router-dom';
@@ -43,6 +43,17 @@ function CadastroCategoria(){
             value
         );
     }
+
+    useEffect(() => {
+        const url = "http://localhost:8000/categorias";
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                setCategorias([
+                    ...data,
+                ])
+            })
+    }, []);
 
     return(
         <PageDefault>

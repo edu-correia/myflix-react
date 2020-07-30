@@ -2,9 +2,15 @@
     "categorias": [
         {
             "id": 1,
-            "nome": "",
-            "descricao": "",
-            "cor": ""
+            "nome": "BackEnd",
+            "descricao": "Playlist de videos sobre backend",
+            "cor": "#3399ee"
+        },
+        {
+            "id": 2,
+            "nome": "FrontEnd",
+            "descricao": "Playlist de videos sobre frontend",
+            "cor": "#ee9933"
         }
     ]
 }
