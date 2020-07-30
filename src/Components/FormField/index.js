@@ -61,6 +61,16 @@ const Tag = styled.input`
   &:focus:not([type='color']) + ${Label.Text} {
     transform: scale(.6) translateY(-10px);
   }
+
+  ${({ value }) => {
+    const hasValue = value.length > 0;
+    return hasValue && css`
+        &:not([type='color']) + ${Label.Text} {
+          transform: scale(.6) translateY(-10px);
+        }
+      `;
+  }
+}
 `;
 
 function FormField({ name, type, label, value, onChange }){
@@ -72,10 +82,6 @@ function FormField({ name, type, label, value, onChange }){
     return (
         <FormFieldWrapper>
             <Label htmlFor={fieldId}>
-                <Label.Text>
-                    {label}:
-                </Label.Text>
-
                 <Tag
                     as={As}
                     id={fieldId}
@@ -84,6 +90,10 @@ function FormField({ name, type, label, value, onChange }){
                     value={value}
                     onChange={onChange}
                 />
+
+                <Label.Text>
+                    {label}:
+                </Label.Text>
             </Label>
         </FormFieldWrapper>
     );

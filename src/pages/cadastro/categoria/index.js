@@ -7,8 +7,8 @@ function CadastroCategoria(){
     const [categorias, setCategorias] = useState([])
     
     const valoresIniciais = {
-        nome: "Nome da Categoria",
-        descricao: "Descrição da categoria",
+        nome: "",
+        descricao: "",
         cor: "#000000"
     }
 
