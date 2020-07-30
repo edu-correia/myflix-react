@@ -45,7 +45,7 @@ function CadastroCategoria(){
     }
 
     useEffect(() => {
-        const url = "http://localhost:8000/categorias";
+        const url = "https://myflix-react.herokuapp.com/categorias";
         fetch(url)
             .then(response => response.json())
             .then(data => {
