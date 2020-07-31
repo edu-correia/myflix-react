@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import PageDefault from '../../../Components/PageDefault';
 import FormField from '../../../Components/FormField'
 import {Link} from 'react-router-dom';
+import useForm from '../../../hooks/useForm';
+import categoriasRepository from '../../../repositories/categorias'
 
 function CadastroCategoria(){
     const [categorias, setCategorias] = useState([])
@@ -12,8 +14,6 @@ function CadastroCategoria(){
         cor: "#000000"
     }
 
-    const [valores, setValores] = useState(valoresIniciais);
-
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -22,36 +22,15 @@ function CadastroCategoria(){
             valores
         ])
 
-        setValores({
-            nome: '',
-            descricao: '',
-            color: '#000'
-        });
+        clearForm();
     } 
 
-    const setValor = (chave, valor) => {
-        setValores({
-            ...valores,
-            [chave]: valor
-        });
-    }
-
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setValor(
-            name, 
-            value
-        );
-    }
+    const {handleChange, valores, clearForm } = useForm(valoresIniciais);
 
     useEffect(() => {
-        const url = "https://myflix-react.herokuapp.com/categorias";
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                setCategorias([
-                    ...data,
-                ])
+        categoriasRepository.getAllWithVideos()
+            .then((CategoriasComVideos) => {
+                console.log(CategoriasComVideos)
             })
     }, []);
 
@@ -92,6 +71,7 @@ function CadastroCategoria(){
 
             <ul>
                 {categorias.map((categoria, indice) => {
+                    console.log(categoria)
                     return (
                         <li key={indice}>
                             {categoria.nome}
