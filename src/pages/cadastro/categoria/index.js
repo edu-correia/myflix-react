@@ -72,7 +72,6 @@ function CadastroCategoria(){
 
             <ul>
                 {categorias.map((categoria, indice) => {
-                    console.log(categoria)
                     return (
                         <li key={indice}>
                             {categoria.nome}
