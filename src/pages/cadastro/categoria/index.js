@@ -30,8 +30,9 @@ function CadastroCategoria(){
     useEffect(() => {
         categoriasRepository.getAllWithVideos()
             .then((CategoriasComVideos) => {
-                console.log(CategoriasComVideos)
+                setCategorias(CategoriasComVideos)
             })
+            .catch(err => console.log(err.message))
     }, []);
 
     return(
